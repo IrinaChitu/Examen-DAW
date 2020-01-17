@@ -1,0 +1,61 @@
+﻿@model Examen.Models.Contest
+
+@{
+    ViewBag.Title = "Editare concurs";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@if (TempData.ContainsKey("eroare"))
+{
+    <h3 class="alert alert-danger" role="alert">@TempData["eroare"]</h3>
+}
+
+@using (Html.BeginForm(actionName: "Edit", controllerName: "Contest"))
+{
+    @Html.HttpMethodOverride(HttpVerbs.Put)
+
+    @Html.HiddenFor(m => m.IdConcurs)
+
+
+    @Html.Label("Titlu", "Numele concursului")
+    <br />
+    @Html.Editor("Titlu", null, new { @class = "form-control summernote" })
+    @Html.ValidationMessage("Titlu", "", new { @class = "text-danger" })
+    <br />
+    <br />
+    <br />
+
+
+
+    @Html.Label("Descriere", "Descriere recenzie")
+    <br />
+    @Html.TextArea("Descriere", null, new { @class = "form-control summernote" })
+    @Html.ValidationMessage("Descriere", "", new { @class = "text-danger" })
+    <br />
+    <br />
+
+    @Html.Label("NrParticipanti", "Specificati numarul de participanti")
+    <br />
+    @Html.Editor("NrParticipanti", null, new { @class = "form-control summernote" })
+    @Html.ValidationMessage("NrParticipanti", "", new { @class = "text-danger" })
+    <br />
+    <br />
+
+    @Html.Label("Data", "Specificati ziua concursului")
+    <br />
+    @Html.Editor("Data", "", new { @class = "form-control" })
+    @Html.ValidationMessage("Data", "", new { @class = "text-danger" })
+    <br />
+    <br />
+
+    <label>Selectati organizatorul</label>
+    @Html.DropDownListFor(m => m.IdOrganizator,
+        new SelectList(Model.Organizers, "Value", "Text"),
+        "Selectati organizatorul", new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.IdOrganizator, "", new { @class = "text-danger" })
+    <br />
+
+    <button class="btn btn-sm btn-success" type="submit">Modifica concursul</button>
+}
+

@@ -1,0 +1,30 @@
+﻿@model Examen.Models.Contest
+
+@{
+    ViewBag.Title = "Show";
+}
+
+<h1>Afisare concurs</h1>
+
+
+<div class="panel panel-default">
+
+    @Html.Partial("InfoContest", Model)
+    <div class="panel-footer article-panel-footer">
+        <a class="btn btn-primary" href="/Contest/Edit/@Model.IdConcurs">Modifica concurs</a>
+
+        @using (Html.BeginForm(actionName: "Delete", controllerName: "Contest", method: FormMethod.Post, routeValues: new { id = @Model.IdConcurs }))
+        {
+            @Html.HttpMethodOverride(HttpVerbs.Delete)
+    <button class="btn btn-danger" type="submit">Sterge concurs</button>
+
+        }
+    </div>
+</div>
+
+
+
+
+
+
+

@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Cauta concurs";
+}
+
+<h2>@ViewBag.Title</h2>
+<br />
+
+
+<form action="/Contest/CautaConcurs">
+
+    <label for="data">Cauta un concurs care se desfasoara dupa data introdusa</label>
+    <input class="text-box single-line" id="data" name="data" type="text">
+    <br />
+    <br />
+   
+    <button class="btn btn-sm btn-info" type="submit">Cauta</button>
+
+</form>

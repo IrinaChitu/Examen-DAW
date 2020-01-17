@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Afisare concursuri";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+<hr />
+
+@if (TempData.ContainsKey("message"))
+{
+    <h3 class="alert alert-info" role="alert">@TempData["message"]</h3>
+}
+
+@foreach (Examen.Models.Contest contest in ViewBag.Contests)
+{
+
+    <div class="panel panel-article">
+        @Html.Partial("InfoContest", contest)
+        <div class="panel-footer article-panel-footer around">
+            <a class="btn btn-sm btn-success full-width" href="/Contest/Show/@contest.IdConcurs">Afisare concurs</a>
+            <a class="btn btn-sm btn-success full-width" href="/Contest/Edit/@contest.IdConcurs">Modifica concurs</a>
+            @using (Html.BeginForm(actionName: "Delete", controllerName: "Contest", method: FormMethod.Post, routeValues: new { id = contest.IdConcurs }))
+            {
+                @Html.HttpMethodOverride(HttpVerbs.Delete)
+                <button class="btn btn-sm btn-danger full-width" type="submit">Sterge concurs</button>
+
+            }
+        </div>
+    </div>
+    <br />
+}
+
+
+
+<br />
+<a class="btn btn-info" href="/Contest/New">Adauga un concurs</a>
+<br />
+
+

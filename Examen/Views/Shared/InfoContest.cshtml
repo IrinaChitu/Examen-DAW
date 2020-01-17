@@ -1,0 +1,33 @@
+﻿
+@model Examen.Models.Contest
+
+
+<div class="panel-heading article-heading">
+    <span class="article-content-title"><strong>Tiltu concurs:  </strong></span>
+
+    <span class="font-roboto article-title"><strong>@Model.Titlu</strong></span>
+</div>
+
+<div class="panel-body">
+    <span class="article-content-title"><strong>Descriere concurs</strong></span>
+    <br />
+    <div class="article-content-wrapper">
+        @Html.Raw(Model.Descriere)
+    </div>
+    <br />
+
+    <span class="article-content-title"><strong>Numar participanti </strong></span>
+    <div class="article-content-wrapper">
+        @Html.Raw(Model.NrParticipanti)
+    </div>
+</div>
+<div class="article-meta">
+    <span class="">
+        <i class="glyphicon glyphicon-time"></i>
+        @Model.Data
+    </span>
+    <div>
+        <i class="glyphicon glyphicon-user"></i>
+        <strong> @Model.Organizator.Nume </strong>
+    </div>
+</div>
